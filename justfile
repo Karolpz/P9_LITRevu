@@ -12,8 +12,11 @@ build:
 restart:
     docker compose restart web
 
+ps:
+    docker compose ps -a
+
 logs:
-    docker compose logs -f web
+    docker compose logs --tail=50 web
 
 manage *ARGS:
     docker compose exec web uv run manage.py {{ARGS}}
